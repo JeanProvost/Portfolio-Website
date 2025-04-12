@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Portfolio Color Scheme */
+  --primary-color: #393E41;
+  --secondary-color: #5EF38C;
+  --tertiary-color: #F4EDED;
+  --background-color-dark: #1a1a1a; /* Renamed for clarity */
+  --text-color-dark: rgba(255, 255, 255, 0.87);
+  --background-color-light: #ffffff;
+  --text-color-light: #213547;
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  /* Default to dark mode variables */
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* Apply light mode variables */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+  }
+}
