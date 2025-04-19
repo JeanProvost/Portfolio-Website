@@ -5,7 +5,10 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className={styles.heroSection}>
       <h1>Hero Section</h1>
-      {/* Content for Hero section */}
+      <div className={styles.heroImageContainer}></div>
+      <div className={styles.heroContent}>
+
+      </div>
     </section>
   );
 };
