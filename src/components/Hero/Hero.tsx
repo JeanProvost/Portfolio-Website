@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setHighlightedNameIndex((prevIndex) => (prevIndex + 1) % nameWords.length);
-    }, 1000); // Change word every 1 second
+    }, 10000);
 
     return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [nameWords.length]); // Dependency array
@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setHighlightedSubIndex((prevIndex) => (prevIndex + 1) % subWords.length);
-    }, 1000); // Change word every 1 second
+    }, 10000);
 
     return () => clearInterval(intervalId); // Cleanup interval on unmount
   }, [subWords.length]); // Dependency array
