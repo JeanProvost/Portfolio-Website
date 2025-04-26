@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Hero.module.css';
 
 const Hero: React.FC = () => {
@@ -6,19 +6,29 @@ const Hero: React.FC = () => {
   const subText = "[Some interesting subtext goes right here about yourself]";
   const highlightColor = '#5EF38C';
 
-  const colorizeEveryThirdWord = (text: string) => {
-    const words = text.split(' ');
-    return words.map((word, index) => {
-      const isThirdWord = (index + 1) % 3 === 0;
-      // Add space after each word except the last one
-      const trailingSpace = index < words.length - 1 ? ' ' : ''; 
-      return (
-        <span key={index} style={{ color: isThirdWord ? highlightColor : 'inherit' }}>
-          {word}{trailingSpace}
-        </span>
-      );
-    });
-  };
+  // State and logic for Name animation
+  const nameWords = nameText.split(' ');
+  const [highlightedNameIndex, setHighlightedNameIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setHighlightedNameIndex((prevIndex) => (prevIndex + 1) % nameWords.length);
+    }, 1000); // Change word every 1 second
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, [nameWords.length]); // Dependency array
+
+  // State and logic for Subtext animation
+  const subWords = subText.split(' ');
+  const [highlightedSubIndex, setHighlightedSubIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setHighlightedSubIndex((prevIndex) => (prevIndex + 1) % subWords.length);
+    }, 1000); // Change word every 1 second
+
+    return () => clearInterval(intervalId); // Cleanup interval on unmount
+  }, [subWords.length]); // Dependency array
 
   return (
     <section id="hero" className={styles.heroSection}>
@@ -27,8 +37,28 @@ const Hero: React.FC = () => {
       </div>
 
       <div className={styles.heroContent}>
-        <h2>{colorizeEveryThirdWord(nameText)}</h2>
-        <p>{colorizeEveryThirdWord(subText)}</p>
+        <h2>
+          {nameWords.map((word, index) => {
+            const isHighlighted = index === highlightedNameIndex;
+            const trailingSpace = index < nameWords.length - 1 ? ' ' : '';
+            return (
+              <span key={index} style={{ color: isHighlighted ? highlightColor : 'inherit' }}>
+                {word}{trailingSpace}
+              </span>
+            );
+          })}
+        </h2>
+        <p>
+          {subWords.map((word, index) => {
+            const isHighlighted = index === highlightedSubIndex;
+            const trailingSpace = index < subWords.length - 1 ? ' ' : '';
+            return (
+              <span key={index} style={{ color: isHighlighted ? highlightColor : 'inherit' }}>
+                {word}{trailingSpace}
+              </span>
+            );
+          })}
+        </p>
       </div>
     </section>
   );
