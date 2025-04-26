@@ -4,46 +4,68 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Ensure positioning context for ::before */
+  position: relative;
   overflow: hidden;
-  /* Updated gradient: 135deg angle starting black from bottom-left */
-  background-image: linear-gradient(60deg, #000000 50%, #1e2729 85%, #1e2729 90%);
-  z-index: 0; /* Ensure content can be placed above ::before */
+  /* Updated Gradient - Top to Bottom with stops */
+  /*background-image: linear-gradient(to bottom, #1e2729 0%, #1e2729 30%, #000000 100%); */
+  z-index: 0;
 }
 
-/* Add ::before pseudo-element for the clipped background image */
-.heroSection::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../../assets/Hero/ciruit-green-hero.png');
-  background-repeat: repeat; /* Keep repeat as before, adjust if needed */
-  /* Clip to a triangle in the top-right corner (approx 1/5th area) */
-  clip-path: polygon(80% 0, 100% 0, 100% 80%);
-  z-index: -1;
-}
-
-/*
+/* Container for the image shapes */
 .heroImageContainer {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 33.33%;
-  width: 100%;
-  background-image: url('../../assets/Hero/ciruit-green-hero.png');
-  background-repeat: repeat;
-  mix-blend-mode: isolate;
+  top: 45%;
+  right: 10%;
+  transform: translateY(-50%);
+  z-index: 0;
 }
-*/
+
+/* Individual image shape */
+.heroImageShape {
+  width: 25vw;
+  height: 20vw;
+  background-image: url('../../assets/Hero/ciruit-green-hero.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid black;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
 
 .heroContent {
-  /* Add styles for your hero content here */
-  /* Ensure content is above the pseudo-element */
   position: relative;
   z-index: 1;
   color: white;
   text-align: center;
+}
+
+/* Card Styles */
+.heroCard {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  background-color: rgba(30, 39, 41, 0.8); /* Translucent background */
+  padding: 2rem;
+  border-radius: 0.5rem; /* Rounded corners */
+  color: white;
+  z-index: 1; /* Ensure it's above image container if necessary */
+  /* 3D Border Effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light top/left edge */
+  box-shadow: 
+    inset 0px 1px 1px rgba(255, 255, 255, 0.1), /* Inner top highlight */
+    inset 0px -1px 1px rgba(0, 0, 0, 0.3), /* Inner bottom shadow */
+    5px 5px 15px rgba(0, 0, 0, 0.5); /* Outer drop shadow */
+  max-width: 300px; /* Example max width */
+}
+
+.heroCard h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.heroCard p {
+  font-size: 1.1rem;
+  color: #aaa; /* Example subtext color */
 }
