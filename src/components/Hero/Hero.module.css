@@ -34,30 +34,35 @@
 }
 
 .heroContent {
-  position: relative;
+  /* position: relative; */ /* Changed to absolute */
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
   z-index: 1;
   color: white;
-  text-align: center;
+  text-align: left; /* Changed alignment */
+  max-width: 40%; /* Optional: constrain width */
 }
 
-/* Card Styles */
+/* Remove Card Styles */
+/*
 .heroCard {
   position: absolute;
   top: 50%;
   left: 10%;
   transform: translateY(-50%);
-  background-color: rgba(30, 39, 41, 0.8); /* Translucent background */
+  background-color: rgba(30, 39, 41, 0.8); 
   padding: 2rem;
-  border-radius: 0.5rem; /* Rounded corners */
+  border-radius: 0.5rem; 
   color: white;
-  z-index: 1; /* Ensure it's above image container if necessary */
-  /* 3D Border Effect */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light top/left edge */
+  z-index: 1; 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
   box-shadow: 
-    inset 0px 1px 1px rgba(255, 255, 255, 0.1), /* Inner top highlight */
-    inset 0px -1px 1px rgba(0, 0, 0, 0.3), /* Inner bottom shadow */
-    5px 5px 15px rgba(0, 0, 0, 0.5); /* Outer drop shadow */
-  max-width: 300px; /* Example max width */
+    inset 0px 1px 1px rgba(255, 255, 255, 0.1), 
+    inset 0px -1px 1px rgba(0, 0, 0, 0.3), 
+    5px 5px 15px rgba(0, 0, 0, 0.5); 
+  max-width: 300px; 
 }
 
 .heroCard h2 {
@@ -67,5 +72,6 @@
 
 .heroCard p {
   font-size: 1.1rem;
-  color: #aaa; /* Example subtext color */
+  color: #aaa; 
 }
+*/
