@@ -15,27 +15,22 @@ const Hero: React.FC = () => {
       setHighlightedNameIndex((prevIndex) => (prevIndex + 1) % nameWords.length);
     }, 10000);
 
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, [nameWords.length]); // Dependency array
+    return () => clearInterval(intervalId);
+  }, [nameWords.length]);
 
-  // State and logic for Subtext animation
   const subWords = subText.split(' ');
   const [highlightedSubIndex, setHighlightedSubIndex] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setHighlightedSubIndex((prevIndex) => (prevIndex + 1) % subWords.length);
-    }, 10000);
+    }, 10);
 
-    return () => clearInterval(intervalId); // Cleanup interval on unmount
-  }, [subWords.length]); // Dependency array
+    return () => clearInterval(intervalId);
+  }, [subWords.length]);
 
   return (
     <section id="hero" className={styles.heroSection}>
-      <div className={styles.heroImageContainer}>
-        <div className={styles.heroImageShape}></div>
-      </div>
-
       <div className={styles.heroContent}>
         <h2>
           {nameWords.map((word, index) => {

@@ -20,19 +20,6 @@
   z-index: 0;
 }
 
-/* Individual image shape */
-.heroImageShape {
-  width: 25vw;
-  height: 20vw;
-  background-image: url('../../assets/Hero/ciruit-green-hero.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  border: 2px solid black;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-}
-
 .heroContent {
   /* position: relative; */ /* Changed to absolute */
   position: absolute;
